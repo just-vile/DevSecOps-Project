@@ -38,7 +38,7 @@ const Notes = () => {
                 <Box display="flex" justifyContent="space-between">
                     <Box flex={1} mr={4}>
                         <Typography variant="h4" gutterBottom sx={{ textAlign: 'center', marginBottom: 4 }}>
-                            Add a New Note
+                            Add a New Note NT548
                         </Typography>
                         <Box
                             mb={4}
