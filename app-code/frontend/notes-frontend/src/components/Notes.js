@@ -12,12 +12,12 @@ const Notes = () => {
     }, []);
 
     const fetchNotes = async () => {
-        const response = await axios.get('k8s-threetie-backendi-89d961f034-2108219725.us-east-1.elb.amazonaws.com/api/notes/');
+        const response = await axios.get('https://api.dovz.shop/api/notes/');
         setNotes(response.data);
     };
 
     const addNote = async () => {
-        const response = await axios.post('k8s-threetie-backendi-89d961f034-2108219725.us-east-1.elb.amazonaws.com/api/notes/', { title, content });
+        const response = await axios.post('https://api.dovz.shop/api/notes/', { title, content });
         setNotes([...notes, response.data]);
         setTitle('');
         setContent('');
@@ -38,7 +38,7 @@ const Notes = () => {
                 <Box display="flex" justifyContent="space-between">
                     <Box flex={1} mr={4}>
                         <Typography variant="h4" gutterBottom sx={{ textAlign: 'center', marginBottom: 4 }}>
-                            Add a New Note NT548
+                            Add a New Note
                         </Typography>
                         <Box
                             mb={4}
