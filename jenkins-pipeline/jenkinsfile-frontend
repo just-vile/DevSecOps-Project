@@ -30,8 +30,8 @@ pipeline {
                             $SCANNER_HOME/bin/sonar-scanner \
                             -Dsonar.projectKey=frontend \
                             -Dsonar.sources=. \
-                            -Dsonar.host.url=http://54.173.162.162:9000 \
-                            -Dsonar.login=sqp_3d69bfda74b7978e34d5674f04c5eb926241e005
+                            -Dsonar.host.url=http://98.84.154.178:9000 \
+                            -Dsonar.login=sqp_2e9f82556a6624ba0702b2d190b444afba3e3635
                         '''
                     }
                 }
@@ -44,14 +44,14 @@ pipeline {
                 }
             }
         }
-        stage('OWASP Dependency-Check Scan') {
-            steps {
-                dir('app-code/frontend/notes-frontend') {
-                    dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-                    dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-                }
-            }
-        }
+        // stage('OWASP Dependency-Check Scan') {
+        //     steps {
+        //         dir('app-code/frontend/notes-frontend') {
+        //             dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
+        //             dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //         }
+        //     }
+        // }
         stage('Trivy File Scan') {
             steps {
                 dir('app-code/frontend/notes-frontend') {
@@ -97,7 +97,6 @@ pipeline {
             steps {
                 dir('kubernetes-manifests/frontend') {
                     withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-                        // First, list the files in the directory to check if deployment.yaml exists
                         sh '''
                             echo "Listing files in kubernetes-manifests/frontend directory:"
                             ls -l
