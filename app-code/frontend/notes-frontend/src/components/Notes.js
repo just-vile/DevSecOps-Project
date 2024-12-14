@@ -12,12 +12,12 @@ const Notes = () => {
     }, []);
 
     const fetchNotes = async () => {
-        const response = await axios.get('http://k8s-threetie-backendi-89d961f034-2012657012.us-east-1.elb.amazonaws.com/api/notes/');
+        const response = await axios.get('http://k8s-threetie-backendi-89d961f034-535472457.us-east-1.elb.amazonaws.com/api/notes/');
         setNotes(response.data);
     };
 
     const addNote = async () => {
-        const response = await axios.post('http://k8s-threetie-backendi-89d961f034-2012657012.us-east-1.elb.amazonaws.com/api/notes/', { title, content });
+        const response = await axios.post('http://k8s-threetie-backendi-89d961f034-535472457.us-east-1.elb.amazonaws.com/api/notes/', { title, content });
         setNotes([...notes, response.data]);
         setTitle('');
         setContent('');
